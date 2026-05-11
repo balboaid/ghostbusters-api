@@ -41,7 +41,7 @@ function identifyPlatform(url) {
 // Dispara scraper Python
 function runPythonScraper(script, url) {
   return new Promise((resolve) => {
-    const py = spawn("python", [`api/scrapers/${script}`, url]);
+    const py = spawn("python", [`api/scrappers/${script}`, url]);
 
     let result = "";
     py.stdout.on("data", (data) => (result += data.toString()));
@@ -51,10 +51,10 @@ function runPythonScraper(script, url) {
 }
 
 // Import scrapers JS
-const greenhouseScraper = require("./scrapers/greenhouse");
-const leverScraper = require("./scrapers/lever");
+const greenhouseScraper = require("./scrappers/greenhouse");
+const leverScraper = require("./scrappers/lever");
 
 // Iniciar servidor
 fastify.listen({ port: 3000 }, () => {
-  console.log("Ghostbusters API running on port 3000");
+  console.log("Ghostbusters API is running on port 3000");
 });
