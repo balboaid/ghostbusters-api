@@ -24,3 +24,6 @@ Thumbs.db
 
 # VS Code
 .vscode/settings.json
+
+# DB
+database/*.db

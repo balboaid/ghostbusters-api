@@ -1,4 +1,13 @@
 module.exports = function detectGhost(data) {
-  if (!data.found) return 1.0;
-  return 0.0;
+  if (!data.found) {
+    return {
+      ghostScore: 100,
+      verdict: "ghost"
+    };
+  }
+
+  return {
+    ghostScore: 0,
+    verdict: "real"
+  };
 };
