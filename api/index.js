@@ -1,10 +1,22 @@
 const fastify = require("fastify")();
+const cors = require("@fastify/cors");
 const axios = require("axios");
 const { spawn } = require("child_process");
 const detectGhost = require("./utils/detectGhost");
 
+fastify.register(cors, {
+  origin: true
+});
+
 fastify.get("/", async () => {
   return { message: "Ghostbusters API is running" };
+});
+
+fastify.get("/health", async () => {
+  return {
+    status: "ok",
+    service: "Ghostbusters API"
+  };
 });
 
 // Endpoint principal: valida URL

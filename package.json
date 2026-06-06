@@ -4,17 +4,14 @@
   "description": "API Ghostbusters — Validador de URLs e Scraper de plataformas de vagas (Gupy, Greenhouse e Lever).",
   "author": "Seu Nome",
   "license": "MIT",
-
   "type": "commonjs",
   "main": "api/index.js",
-
   "scripts": {
     "start": "node api/index.js",
     "dev": "nodemon api/index.js",
     "lint": "eslint .",
     "format": "prettier --write ."
   },
-
   "keywords": [
     "scraper",
     "fastify",
@@ -24,16 +21,15 @@
     "job-scraper",
     "ghostbusters"
   ],
-
   "dependencies": {
+    "@fastify/cors": "^11.2.0",
     "axios": "^1.13.2",
     "fastify": "^5.6.2",
     "playwright": "^1.57.0"
   },
-
   "devDependencies": {
-    "nodemon": "^3.1.0",
     "eslint": "^9.11.0",
+    "nodemon": "^3.1.0",
     "prettier": "^3.3.3"
   }
 }

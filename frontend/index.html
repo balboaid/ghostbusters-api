@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ghostbusters API - Test UI</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0c0c0c;
+      color: #fff;
+      padding: 40px;
+      text-align: center;
+    }
+
+    h1 {
+      color: #00e676;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 70%;
+      padding: 12px;
+      border-radius: 6px;
+      border: none;
+      margin-bottom: 20px;
+      font-size: 16px;
+    }
+
+    button {
+      padding: 12px 24px;
+      background: #00e676;
+      color: #000;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 16px;
+    }
+
+    button:hover {
+      background: #03c96a;
+    }
+
+    pre {
+      margin-top: 30px;
+      background: #1a1a1a;
+      padding: 20px;
+      border-radius: 8px;
+      text-align: left;
+      white-space: pre-wrap;
+      word-break: break-word;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>👻 Ghostbusters API Tester</h1>
+
+  <input id="jobUrl" type="text" placeholder="Cole aqui a URL da vaga (Gupy, Lever, Greenhouse)" />
+
+  <br />
+
+  <button onclick="validateJob()">Bust Ghosts!</button>
+
+  <pre id="output">Aguardando teste...</pre>
+
+  <script>
+    async function validateJob() {
+      const url = document.getElementById("jobUrl").value;
+      const output = document.getElementById("output");
+
+      output.innerText = "🕵️‍♂️ Caçando fantasmas...";
+
+      const response = await fetch("http://localhost:3000/validate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ url })
+      });
+
+      const data = await response.json();
+
+      output.innerText = JSON.stringify(data, null, 2);
+    }
+  </script>
+
+</body>
+</html>
